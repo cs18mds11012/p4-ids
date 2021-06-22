@@ -3,16 +3,15 @@
 Steps to generate data:
 -----------------------
   1.  Test pcap file tcp_test.pcap is provided in the git repo. 
-      This file is created by using following command.
+      This file is created by using following command. \
       ``tcpdump  -qns 0 -X -r ./pcap_splits/test_split_00000_20170704115332.pcap tcp  -w ~/tcp_test.pcap``
   
   2.  place the .p4 files in right environment. we may use exercises in https://github.com/nsg-ethz/p4-learning.git, 01-Reflector exercise will do.
   
   3.  start p4 switch (sudo p4 run)
   
-  4.  replay the pcap file
-		``
-          sudo tcpreplay  --intf1=s1-eth1  ./tcp_pcap/tcp_test.pcap  <br />
+  4.  replay the pcap file\
+		`` sudo tcpreplay  --intf1=s1-eth1  ./tcp_pcap/tcp_test.pcap `` \
           Actual: 1356 packets (596230 bytes) sent in 157.39 seconds <br />
           Rated: 3788.0 Bps, 0.030 Mbps, 8.61 pps  <br />
           Flows: 113 flows, 0.71 fps, 1356 flow packets, 0 non-flow   <br />
