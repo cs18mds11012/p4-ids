@@ -12,28 +12,28 @@ Steps to generate data:
   
   4.  replay the pcap file
 		``
-          sudo tcpreplay  --intf1=s1-eth1  ./tcp_pcap/tcp_test.pcap  
-          Actual: 1356 packets (596230 bytes) sent in 157.39 seconds  
-          Rated: 3788.0 Bps, 0.030 Mbps, 8.61 pps  
-          Flows: 113 flows, 0.71 fps, 1356 flow packets, 0 non-flow  
-          Statistics for network device: s1-eth1  
-                  Successful packets:        1356  
-                  Failed packets:            0  
-                  Truncated packets:         0  
-                  Retried packets (ENOBUFS): 0  
-                  Retried packets (EAGAIN):  0  
+          sudo tcpreplay  --intf1=s1-eth1  ./tcp_pcap/tcp_test.pcap  <br />
+          Actual: 1356 packets (596230 bytes) sent in 157.39 seconds <br />
+          Rated: 3788.0 Bps, 0.030 Mbps, 8.61 pps  <br />
+          Flows: 113 flows, 0.71 fps, 1356 flow packets, 0 non-flow   <br />
+          Statistics for network device: s1-eth1   <br />
+                  Successful packets:        1356  <br />
+                  Failed packets:            0     <br />
+                  Truncated packets:         0     <br />
+                  Retried packets (ENOBUFS): 0     <br />
+                  Retried packets (EAGAIN):  0     <br />
          ``       
   5. verify if all the packets are received by switch. if not try using --pps(packets per second) option 
      For this verification, we have a counter name packet_counter
 		``
-            simple_switch_CLI --thrift-port 9090  
-            Obtaining JSON from switch...  
-            Done  
-            Control utility for runtime P4 table manipulation  
-            RuntimeCmd: register_read packet_counter  
-            register index omitted, reading entire array 
-            packet_counter= 1356  
-            RuntimeCmd:  
+            simple_switch_CLI --thrift-port 9090    <br />
+            Obtaining JSON from switch...           <br /> 
+            Done  									<br />
+            Control utility for runtime P4 table manipulation  <br /> 
+            RuntimeCmd: register_read packet_counter           <br />
+            register index omitted, reading entire array       <br />
+            packet_counter= 1356 							   <br /> 
+            RuntimeCmd:  									   <br />
 		`` 
   6. run reg_copy.sh script. this script reads counters from the registers and copies them to .csv files. There will be an individual .csv file for each register.
 
